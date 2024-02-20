@@ -1,113 +1,149 @@
+import { Button } from "@/components/button";
+import { Chip } from "@/components/chip";
+import { shapes } from "@/constants";
+import clsx from "clsx";
+import localFont from "next/font/local";
 import Image from "next/image";
+
+const ZodiakBold = localFont({
+  src: [{ path: "../public/Zodiak-Bold.woff", style: "normal", weight: "700" }],
+});
+
+const SatoshiBold = localFont({
+  src: [
+    { path: "../public/Satoshi-Bold.woff", style: "normal", weight: "700" },
+  ],
+});
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <header className="mx-auto flex p-5 max-w-4xl flex-col gap-14 justify-center items-center h-screen -mt-20">
+        <Chip label="Mental health and Astronomy" />
+        <h1
+          className={clsx(
+            ZodiakBold.className,
+            "font-bold text-3xl md:text-5xl",
+            "max-w-xl text-center",
+            "leading-normal",
+          )}
+        >
+          Navigating the <span className="text-[#9d9d9d]">cosmos</span> of your{" "}
+          <span className="text-[#9d9d9d]">mind</span>.
+        </h1>
+        <Button label="Download the app" />
+      </header>
+
+      <section className="flex flex-col px-5 items-center gap-10 bg-white w-full h-screen py-10">
+        <ul className="grid grid-cols-2 md:flex justify-center items-center gap-8">
+          {shapes.map((Shape, idx) => (
+            <li className="md:w-40 md:h-40" key={idx}>
+              <Shape />
+            </li>
+          ))}
+        </ul>
+
+        <h2
+          className={clsx(
+            SatoshiBold.className,
+            "text-black text-2xl md:text-3xl max-w-lg text-center font-bold leading-normal",
+          )}
+        >
+          <span className="text-[#9d9d9d]">
+            Log your emotions – Monitor your{" "}
+          </span>
+          mental landscape with precision.
+        </h2>
+
+        <div className="w-[312px] h-[312px] md:w-[450px] md:h-[450px]">
+          <figure className="relative aspect-square w-full h-full">
+            <Image src="/mockup.svg" alt="App" fill className="object-cover" />
+          </figure>
         </div>
-      </div>
+      </section>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <section className="flex flex-col md:flex-row gap-10 items-center p-5 justify-center mx-auto bg-[#f2f2f2] w-full h-screen py-10">
+        <article className="flex flex-col justify-center md:gap-8">
+          <div className="w-40 h-40 md:w-72 md:h-32 -ml-5">
+            <figure className="relative aspect-square w-full h-full">
+              <Image
+                src="/nasa.svg"
+                alt="NASA"
+                fill
+                className="object-contain"
+              />
+            </figure>
+          </div>
+          <h3
+            className={clsx(
+              SatoshiBold.className,
+              "font-bold text-[#9d9d9d] text-2xl md:text-3xl max-w-xl",
+            )}
+          >
+            <span className="text-black">Share your cosmic reflections – </span>
+            Connect with others by sharing your thoughts and insights inspired
+            by NASA&apos;s Astronomy Picture of the Day
+          </h3>
+        </article>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <div className="w-64 h-64 md:w-80 md:h-80">
+          <figure className="relative aspect-square w-full h-full">
+            <Image
+              src="/question.svg"
+              alt="NASA"
+              fill
+              className="object-contain"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-10 p-5 items-center justify-center mx-auto w-full h-screen py-10">
+        <p
+          className={clsx(
+            ZodiakBold.className,
+            "text-center max-w-3xl text-lg md:text-2xl",
+          )}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+          Ad Astra is a personal project driven by a passion for mental wellness
+          and the wonders of the universe. Developed by a dedicated individual,
+          it aims to empower users to explore and understand their emotions in a
+          unique way, combining the art of journaling with the fascination of
+          astronomy.
+        </p>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <div className="w-64 h-64 md:w-80 md:h-80">
+          <figure className="relative aspect-square w-full h-full">
+            <Image
+              src="/heart.svg"
+              alt="NASA"
+              fill
+              className="object-contain"
+            />
+          </figure>
+        </div>
+      </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+      <footer
+        className={clsx(
+          "relative flex flex-col overflow-hidden gap-10",
+          "bg-clip-content justify-between",
+          "mx-auto w-full h-[50vh] md:h-[70vh] py-10",
+        )}
+      >
+        <div className="self-start ml-10">
+          <h4>Ad astra</h4>
+        </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
+        <h5
+          className={clsx(
+            ZodiakBold.className,
+            "font-bold self-center text-[80px] md:text-[300px] absolute -bottom-10 md:-bottom-[150px]",
+          )}
         >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          Ad Astra
+        </h5>
+      </footer>
+    </>
   );
 }
