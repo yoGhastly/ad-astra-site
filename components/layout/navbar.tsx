@@ -24,7 +24,9 @@ export function Navbar() {
           </figure>
         </div>
 
-        <p className={clsx(ZodiakBold.className, "text-2xl")}>ad astra</p>
+        <p className={clsx(ZodiakBold.className, "text-2xl text-[#9d9d9d]")}>
+          ad astra
+        </p>
       </div>
     </nav>
   );

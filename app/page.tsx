@@ -1,9 +1,11 @@
+import TextShine from "@/components/animated/text-shine";
 import { Button } from "@/components/button";
 import { Chip } from "@/components/chip";
 import { shapes } from "@/constants";
 import clsx from "clsx";
 import localFont from "next/font/local";
 import Image from "next/image";
+import Link from "next/link";
 
 const ZodiakBold = localFont({
   src: [{ path: "../public/Zodiak-Bold.woff", style: "normal", weight: "700" }],
@@ -34,7 +36,7 @@ export default function Home() {
         <Button label="Download the app" />
       </header>
 
-      <section className="flex flex-col px-5 items-center gap-10 bg-white w-full h-screen py-10">
+      <section className="overflow-hidden flex flex-col px-5 items-center gap-10 bg-white w-full h-screen py-10">
         <ul className="grid grid-cols-2 md:flex justify-center items-center gap-8">
           {shapes.map((Shape, idx) => (
             <li className="md:w-40 md:h-40" key={idx}>
@@ -64,7 +66,7 @@ export default function Home() {
 
       <section className="flex flex-col md:flex-row gap-10 items-center p-5 justify-center mx-auto bg-[#f2f2f2] w-full h-screen py-10">
         <article className="flex flex-col justify-center md:gap-8">
-          <div className="w-40 h-40 md:w-72 md:h-32 -ml-5">
+          <div className="w-36 h-36 md:w-72 md:h-32 -ml-2.5 md:-ml-5">
             <figure className="relative aspect-square w-full h-full">
               <Image
                 src="/nasa.svg"
@@ -80,7 +82,9 @@ export default function Home() {
               "font-bold text-[#9d9d9d] text-2xl md:text-3xl max-w-xl",
             )}
           >
-            <span className="text-black">Share your cosmic reflections – </span>
+            <span className="text-black">
+              Share your cosmic <TextShine label="reflections" /> –{" "}
+            </span>
             Connect with others by sharing your thoughts and insights inspired
             by NASA&apos;s Astronomy Picture of the Day
           </h3>
@@ -91,6 +95,7 @@ export default function Home() {
             <Image
               src="/question.svg"
               alt="NASA"
+              priority
               fill
               className="object-contain"
             />
@@ -117,6 +122,7 @@ export default function Home() {
             <Image
               src="/heart.svg"
               alt="NASA"
+              priority
               fill
               className="object-contain"
             />
@@ -128,11 +134,36 @@ export default function Home() {
         className={clsx(
           "relative flex flex-col overflow-hidden gap-10",
           "bg-clip-content justify-between",
-          "mx-auto w-full h-[50vh] md:h-[70vh] py-10",
+          "mx-auto w-full h-[40vh] md:h-[60vh] py-10",
         )}
       >
-        <div className="self-start ml-10">
-          <h4>Ad astra</h4>
+        <div className="flex flex-col gap-5 font-sans justify-center items-center text-[#9d9d9d]">
+          <Link
+            href="https://github.com/yoGhastly"
+            target="_blank"
+            className="self-start ml-10 underline"
+          >
+            Github
+          </Link>
+
+          <Link
+            href="https://expo.dev/@ghastly/ad-astra"
+            target="_blank"
+            className="self-start ml-10 underline"
+          >
+            Get App
+          </Link>
+
+          <p className="self-start ml-10">
+            Made with love by{" "}
+            <Link
+              href="https://diegoes.vercel.app"
+              target="_blank"
+              className="underline"
+            >
+              Diego
+            </Link>
+          </p>
         </div>
 
         <h5
